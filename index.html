@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RouteGlow Logistics — Master AI Dispatch & Operations Network</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          },
+          colors: {
+            glow: {
+              50: '#fff7ed',
+              500: '#f97316',
+              600: '#ea580c',
+              900: '#7c2d12'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #0b0f19; color: #f3f4f6; }
+    .neon-border { box-shadow: 0 0 15px rgba(249, 115, 22, 0.25); }
+    .wave-bar { animation: soundWave 1.2s ease-in-out infinite alternate; }
+    @keyframes soundWave {
+      0% { height: 6px; }
+      100% { height: 38px; }
+    }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-orange-500 selection:text-white">
+
+  <!-- TOP STATUS BAR -->
+  <header class="border-b border-gray-800 bg-[#0f172a]/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-3.5 h-3.5 rounded-full bg-orange-500 animate-ping"></div>
+        <div class="font-extrabold text-xl tracking-tight flex items-center gap-2">
+          <span class="text-white">ROUTE</span><span class="text-orange-500">GLOW</span>
+          <span class="text-xs px-2 py-0.5 rounded bg-orange-500/10 text-orange-400 border border-orange-500/30 font-mono">v1.5 VOICE-NATIVE</span>
+        </div>
+      </div>
+      
+      <div class="flex items-center gap-4 text-xs font-mono">
+        <span class="flex items-center gap-1.5 text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/20">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Ottawa & Toronto Grid Live
+        </span>
+        <span class="flex items-center gap-1.5 text-blue-400 bg-blue-500/10 px-2.5 py-1 rounded border border-blue-500/20">
+          <span class="w-2 h-2 rounded-full bg-blue-400"></span> Gemini 1.5 Flash Connected
+        </span>
+        <span class="flex items-center gap-1.5 text-amber-400 bg-amber-500/10 px-2.5 py-1 rounded border border-amber-500/20">
+          <span class="w-2 h-2 rounded-full bg-amber-400"></span> Vicarious Liability Shield: 100%
+        </span>
+        <a href="https://github.com/BenjaminBanansos/routeglow-logistics" target="_blank" class="text-gray-400 hover:text-white transition flex items-center gap-1 bg-gray-800 px-2.5 py-1 rounded border border-gray-700">
+          GitHub Repo ↗
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 py-8 space-y-8">
+
+    <!-- HERO BANNER -->
+    <div class="rounded-2xl bg-gradient-to-r from-orange-950/40 via-gray-900 to-slate-900 border border-orange-500/30 p-6 md:p-8 neon-border">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-orange-400 font-mono font-semibold">Autonomous Software Routing Platform</span>
+          <h1 class="text-3xl md:text-4xl font-extrabold text-white mt-1">High-Urgency Regional Trade Deployment</h1>
+          <p class="text-gray-400 text-sm md:text-base mt-2 max-w-2xl leading-relaxed">
+            Instantaneous intake, algorithmic distance-matrix worker matching, mandatory privity disclosure, and automated 3-minute SLA escalation for Ottawa & Toronto regional grids.
+          </p>
+        </div>
+        <div class="bg-gray-950/80 border border-gray-800 p-4 rounded-xl font-mono text-xs space-y-2 min-w-[260px]">
+          <div class="text-gray-400">Platform Margin Fee: <span class="text-orange-400 font-bold">$45.00 CAD</span></div>
+          <div class="text-gray-400">Target Dispatch SLA: <span class="text-emerald-400 font-bold">60 Minutes</span></div>
+          <div class="text-gray-400">Handshake Timeout: <span class="text-rose-400 font-bold">3.00 Minutes</span></div>
+          <div class="text-gray-400">Fallback Strategy: <span class="text-amber-400 font-bold">Simultaneous Dual-Broadcast</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN TWO-COLUMN DASHBOARD -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      
+      <!-- LEFT COLUMN: LIVE VOICE DISPATCH SIMULATOR (7 COLS) -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="bg-gray-900/90 border border-gray-800 rounded-2xl p-6 shadow-xl space-y-6">
+          <div class="flex items-center justify-between border-b border-gray-800 pb-4">
+            <div>
+              <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                <span>🎙️</span> Live Conversational Voice Layer
+              </h2>
+              <p class="text-xs text-gray-400">Gemini 1.5 Flash Voice-Native Simulation</p>
+            </div>
+            <div id="voice-indicator" class="flex items-end gap-1 h-8">
+              <span class="w-1 bg-orange-500 rounded-full h-2"></span>
+              <span class="w-1 bg-orange-500 rounded-full h-3"></span>
+              <span class="w-1 bg-orange-500 rounded-full h-1"></span>
+              <span class="w-1 bg-orange-500 rounded-full h-4"></span>
+              <span class="w-1 bg-orange-500 rounded-full h-2"></span>
+            </div>
+          </div>
+
+          <!-- SCENARIO SELECTION -->
+          <div class="space-y-2">
+            <label class="text-xs font-mono uppercase text-gray-400">Choose Emergency Incident Scenario:</label>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+              <button onclick="loadScenario('burst_pipe')" class="scenario-btn text-left p-2.5 rounded-lg border border-gray-800 bg-gray-950 hover:border-orange-500/50 hover:bg-gray-800 transition text-xs">
+                <div class="font-bold text-white">💧 Burst Pipe Flooding</div>
+                <div class="text-gray-400 text-[10px]">Ottawa Downtown (K1P)</div>
+              </button>
+              <button onclick="loadScenario('live_spark')" class="scenario-btn text-left p-2.5 rounded-lg border border-gray-800 bg-gray-950 hover:border-orange-500/50 hover:bg-gray-800 transition text-xs">
+                <div class="font-bold text-white">⚡ Panel Smoke / Sparks</div>
+                <div class="text-gray-400 text-[10px]">Toronto West (M6J)</div>
+              </button>
+              <button onclick="loadScenario('deep_freeze')" class="scenario-btn text-left p-2.5 rounded-lg border border-gray-800 bg-gray-950 hover:border-orange-500/50 hover:bg-gray-800 transition text-xs">
+                <div class="font-bold text-white">💨 No-Heat (-20°C)</div>
+                <div class="text-gray-400 text-[10px]">Ottawa Nepean (K2G)</div>
+              </button>
+              <button onclick="loadScenario('snow_storm')" class="scenario-btn text-left p-2.5 rounded-lg border border-gray-800 bg-gray-950 hover:border-orange-500/50 hover:bg-gray-800 transition text-xs">
+                <div class="font-bold text-white">❄️ Heavy Snow (25cm)</div>
+                <div class="text-gray-400 text-[10px]">Toronto Annex (M5R)</div>
+              </button>
+              <button onclick="loadScenario('tree_fall')" class="scenario-btn text-left p-2.5 rounded-lg border border-gray-800 bg-gray-950 hover:border-orange-500/50 hover:bg-gray-800 transition text-xs">
+                <div class="font-bold text-white">🌳 Tree on Power Line</div>
+                <div class="text-gray-400 text-[10px]">Ottawa Glebe (K1S)</div>
+              </button>
+              <button onclick="loadScenario('sewage_backup')" class="scenario-btn text-left p-2.5 rounded-lg border border-gray-800 bg-gray-950 hover:border-orange-500/50 hover:bg-gray-800 transition text-xs">
+                <div class="font-bold text-white">💧 Commercial Sewage</div>
+                <div class="text-gray-400 text-[10px]">Toronto Downtown (M5V)</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- CALL CONTROL ACTION -->
+          <div class="flex items-center gap-3">
+            <button id="btn-call" onclick="simulateVoiceCall()" class="flex-1 py-3 px-4 rounded-xl font-bold bg-orange-600 hover:bg-orange-500 text-white transition flex items-center justify-center gap-2 shadow-lg shadow-orange-600/30">
+              <span id="call-icon">📞</span>
+              <span id="call-text">Simulate First-Ring Inbound Call</span>
+            </button>
+            <button onclick="resetCall()" class="px-4 py-3 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-mono transition">
+              Reset
+            </button>
+          </div>
+
+          <!-- LIVE CALL TRANSCRIPT BOX -->
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs font-mono text-gray-400">
+              <span>LIVE AUDIO TRANSCRIPT & TOOL EXECUTION:</span>
+              <span id="call-state-pill" class="text-gray-500">STANDBY</span>
+            </div>
+            <div id="transcript" class="bg-gray-950 border border-gray-800 rounded-xl p-4 h-80 overflow-y-auto font-mono text-xs space-y-3 leading-relaxed">
+              <div class="text-gray-600 italic">Network idle. Click 'Simulate First-Ring Inbound Call' to trigger the RouteGlow AI Dispatcher intake cycle...</div>
+            </div>
+          </div>
+
+          <!-- VERBATIM LEGAL DISCLAIMER ACCORDION -->
+          <div class="border border-amber-500/30 bg-amber-950/20 rounded-xl p-4 space-y-2">
+            <div class="flex items-center gap-2 text-xs font-bold text-amber-400">
+              <span>⚖️</span> MANDATORY STATUTORY VERBATIM DISCLAIMER (PHASE B)
+            </div>
+            <p class="text-gray-300 text-xs leading-relaxed italic bg-black/40 p-3 rounded-lg border border-amber-500/20">
+              "Before I push this alert out to our live network, please be advised that RouteGlow is a pure software matching platform and technology router, not a licensed contractor. We algorithmically route your service request to independent, third-party local trade businesses and casual gig workers who carry their own individual tools and local qualifications. The physical contract for execution is strictly between you and the responding professional. Our automated software routing fee is forty-five dollars, which locks in your priority sixty-minute dispatch window. This fee, along with the specific trade rate, will be securely pre-authorized on your card. Do you verbally authorize me to process the dispatch fee and alert the closest on-call professional?"
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: DYNAMIC FEE CALCULATOR & ESCALATION MONITOR (5 COLS) -->
+      <div class="lg:col-span-5 space-y-6">
+
+        <!-- CARD 1: DYNAMIC FEE & PRE-AUTH MATRIX -->
+        <div class="bg-gray-900/90 border border-gray-800 rounded-2xl p-6 shadow-xl space-y-4">
+          <div class="border-b border-gray-800 pb-3">
+            <h2 class="text-lg font-bold text-white flex items-center gap-2">
+              <span>💳</span> Dynamic Pre-Auth Calculator
+            </h2>
+            <p class="text-xs text-gray-400">Tool: process_payment_intent</p>
+          </div>
+
+          <div class="space-y-3 text-xs">
+            <div>
+              <label class="text-gray-400 font-mono">Service Category:</label>
+              <select id="calc-category" onchange="updateCalcSubTypes()" class="w-full mt-1 bg-gray-950 border border-gray-800 rounded-lg p-2 text-white font-mono focus:border-orange-500 outline-none">
+                <option value="Plumbing">Plumbing & Water</option>
+                <option value="Winter_Clearing">Winter Clearing</option>
+                <option value="Electrical">Electrical</option>
+                <option value="HVAC">HVAC</option>
+                <option value="Landscaping">Landscaping & Soil</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="text-gray-400 font-mono">Specific Sub-Type:</label>
+              <select id="calc-subtype" onchange="recalcFee()" class="w-full mt-1 bg-gray-950 border border-gray-800 rounded-lg p-2 text-white font-mono focus:border-orange-500 outline-none">
+              </select>
+            </div>
+
+            <!-- DYNAMIC SURCHARGE TOGGLES -->
+            <div class="space-y-2 pt-2 border-t border-gray-800">
+              <label class="text-gray-400 font-mono block">Dynamic Surcharge Factors:</label>
+              <div class="grid grid-cols-2 gap-2 text-[11px]">
+                <label class="flex items-center gap-2 p-2 rounded bg-gray-950 border border-gray-800 cursor-pointer">
+                  <input type="checkbox" id="chk-after-hours" onchange="recalcFee()" class="accent-orange-500">
+                  <span>After-hours (10pm-6am)</span>
+                </label>
+                <label class="flex items-center gap-2 p-2 rounded bg-gray-950 border border-gray-800 cursor-pointer">
+                  <input type="checkbox" id="chk-deep-freeze" onchange="recalcFee()" class="accent-orange-500">
+                  <span>Freeze (< -15°C)</span>
+                </label>
+                <label class="flex items-center gap-2 p-2 rounded bg-gray-950 border border-gray-800 cursor-pointer">
+                  <input type="checkbox" id="chk-snow-15" onchange="recalcFee()" class="accent-orange-500">
+                  <span>Snow > 15cm</span>
+                </label>
+                <label class="flex items-center gap-2 p-2 rounded bg-gray-950 border border-gray-800 cursor-pointer">
+                  <input type="checkbox" id="chk-ice-chop" onchange="recalcFee()" class="accent-orange-500">
+                  <span>Ice Chopping</span>
+                </label>
+                <label class="flex items-center gap-2 p-2 rounded bg-gray-950 border border-gray-800 cursor-pointer">
+                  <input type="checkbox" id="chk-commercial" onchange="recalcFee()" class="accent-orange-500">
+                  <span>Commercial Line</span>
+                </label>
+                <label class="flex items-center gap-2 p-2 rounded bg-gray-950 border border-gray-800 cursor-pointer">
+                  <input type="checkbox" id="chk-rain" onchange="recalcFee()" class="accent-orange-500">
+                  <span>Rain Alert</span>
+                </label>
+                <label class="flex items-center gap-2 p-2 rounded bg-gray-950 border border-gray-800 cursor-pointer">
+                  <input type="checkbox" id="chk-no-dump" onchange="recalcFee()" class="accent-orange-500">
+                  <span>No Dump Access</span>
+                </label>
+                <label class="flex items-center gap-2 p-2 rounded bg-gray-950 border border-gray-800 cursor-pointer">
+                  <input type="checkbox" id="chk-power-lines" onchange="recalcFee()" class="accent-orange-500">
+                  <span>Power Line Hazard</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- FEE BREAKDOWN RECEIPT -->
+            <div class="bg-gray-950 border border-gray-800 rounded-xl p-3 space-y-1.5 font-mono text-xs mt-3">
+              <div class="flex justify-between text-gray-400">
+                <span>Platform Software Margin:</span>
+                <span class="text-white">$45.00 CAD</span>
+              </div>
+              <div class="flex justify-between text-gray-400">
+                <span>Worker Base Payout (<span id="calc-rate-type">flat</span>):</span>
+                <span id="calc-base-payout" class="text-white">$0.00 CAD</span>
+              </div>
+              <div class="flex justify-between text-gray-400">
+                <span>Surcharges:</span>
+                <span id="calc-surcharge" class="text-amber-400">+$0.00 CAD</span>
+              </div>
+              <div class="flex justify-between text-sm font-bold border-t border-gray-800 pt-2 text-white">
+                <span>Total Pre-Authorization:</span>
+                <span id="calc-total" class="text-orange-400">$45.00 CAD</span>
+              </div>
+              <div class="text-[10px] text-gray-500 text-right">
+                Value in Cents: <span id="calc-cents" class="text-gray-400">4500</span> cents
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: 3-MINUTE SLA ESCALATION TIMELINE -->
+        <div class="bg-gray-900/90 border border-gray-800 rounded-2xl p-6 shadow-xl space-y-4">
+          <div class="border-b border-gray-800 pb-3 flex justify-between items-center">
+            <div>
+              <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                <span>⏱️</span> 3-Min SLA Escalation Engine
+              </h2>
+              <p class="text-xs text-gray-400">Twilio SMS / Distance Matrix Cascade</p>
+            </div>
+            <div id="escalation-timer" class="font-mono text-base font-bold text-orange-400 bg-orange-500/10 px-2 py-1 rounded border border-orange-500/20">
+              03:00.00
+            </div>
+          </div>
+
+          <div class="space-y-3 font-mono text-xs">
+            <!-- STEP 0.00 -->
+            <div id="esc-step-0" class="p-2.5 rounded-lg border border-gray-800 bg-gray-950 flex items-start gap-2.5">
+              <span class="text-blue-400 font-bold">0.00m</span>
+              <div>
+                <div class="font-bold text-white">Lead Hits Contractor #1 via Twilio</div>
+                <div class="text-gray-400 text-[11px]">Primary candidate pinged with 3-minute SLA window.</div>
+              </div>
+            </div>
+
+            <!-- STEP 3.00 -->
+            <div id="esc-step-300" class="p-2.5 rounded-lg border border-gray-800 bg-gray-950 flex items-start gap-2.5">
+              <span class="text-rose-400 font-bold">3.00m</span>
+              <div>
+                <div class="font-bold text-white">Handshake Timeout & Suspension</div>
+                <div class="text-gray-400 text-[11px]">UPDATE subcontractors SET account_status='Suspended'.</div>
+              </div>
+            </div>
+
+            <!-- STEP 3.01 -->
+            <div id="esc-step-301" class="p-2.5 rounded-lg border border-gray-800 bg-gray-950 flex items-start gap-2.5">
+              <span class="text-amber-400 font-bold">3.01m</span>
+              <div>
+                <div class="font-bold text-white">Instant Proximity Multi-Broadcast</div>
+                <div class="text-gray-400 text-[11px]">Simultaneous alert to Contractor #2 & #3.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex gap-2 pt-2">
+            <button onclick="startEscalationSim(true)" class="flex-1 py-2 px-3 rounded-lg bg-gray-800 hover:bg-gray-700 text-xs text-emerald-400 font-mono transition">
+              Simulate: Accepted at 45s
+            </button>
+            <button onclick="startEscalationSim(false)" class="flex-1 py-2 px-3 rounded-lg bg-rose-950/40 hover:bg-rose-900/60 border border-rose-500/30 text-xs text-rose-300 font-mono transition">
+              Simulate: Missed Timeout
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- SUBCONTRACTORS REGISTRY & VICARIOUS LIABILITY SHIELD -->
+    <div class="bg-gray-900/90 border border-gray-800 rounded-2xl p-6 shadow-xl space-y-4">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-gray-800 pb-3">
+        <div>
+          <h2 class="text-lg font-bold text-white flex items-center gap-2">
+            <span>🛡️</span> Subcontractors Registry & Liability Gate
+          </h2>
+          <p class="text-xs text-gray-400">Zero tolerance query view: All 4 contractual liability flags must equal true</p>
+        </div>
+        <div class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded border border-emerald-500/20">
+          Strict Ontario WSIB & Privity Gate Enforced
+        </div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left font-mono text-xs">
+          <thead>
+            <tr class="text-gray-400 border-b border-gray-800 bg-gray-950/60">
+              <th class="p-3">Worker / Business</th>
+              <th class="p-3">City</th>
+              <th class="p-3">Type</th>
+              <th class="p-3">Postal Coverage</th>
+              <th class="p-3 text-center">Liability Assumption</th>
+              <th class="p-3 text-center">Hold Harmless</th>
+              <th class="p-3 text-center">Privity of Contract</th>
+              <th class="p-3 text-center">Status</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-800/60 text-gray-300">
+            <tr>
+              <td class="p-3 font-semibold text-white">Marc Tremblay (Capital QuickFlow)</td>
+              <td class="p-3 text-orange-400">Ottawa</td>
+              <td class="p-3">Independent_Business</td>
+              <td class="p-3 text-gray-400">K1P, K2P, K1N, K1S</td>
+              <td class="p-3 text-center text-emerald-400 font-bold">TRUE</td>
+              <td class="p-3 text-center text-emerald-400 font-bold">TRUE</td>
+              <td class="p-3 text-center text-emerald-400 font-bold">TRUE</td>
+              <td class="p-3 text-center"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400">Active_On_Call</span></td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white">Alex Moreau (Rideau Trades)</td>
+              <td class="p-3 text-orange-400">Ottawa</td>
+              <td class="p-3">Casual_Gig_Worker</td>
+              <td class="p-3 text-gray-400">K1P, K1Y, K2A</td>
+              <td class="p-3 text-center text-emerald-400 font-bold">TRUE</td>
+              <td class="p-3 text-center text-emerald-400 font-bold">TRUE</td>
+              <td class="p-3 text-center text-emerald-400 font-bold">TRUE</td>
+              <td class="p-3 text-center"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400">Active_On_Call</span></td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white">David O'Connor (Bytown Plumbing)</td>
+              <td class="p-3 text-orange-400">Ottawa</td>
+              <td class="p-3">Independent_Business</td>
+              <td class="p-3 text-gray-400">K1P, K1N, K1B</td>
+              <td class="p-3 text-center text-emerald-400 font-bold">TRUE</td>
+              <td class="p-3 text-center text-emerald-400 font-bold">TRUE</td>
+              <td class="p-3 text-center text-emerald-400 font-bold">TRUE</td>
+              <td class="p-3 text-center"><span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400">Active_On_Call</span></td>
+            </tr>
+            <tr class="bg-rose-950/20 border-l-2 border-rose-500">
+              <td class="p-3 font-semibold text-rose-300">Unverified Handyman (Rejected Flag)</td>
+              <td class="p-3 text-rose-300">Ottawa</td>
+              <td class="p-3 text-rose-300">Casual_Gig_Worker</td>
+              <td class="p-3 text-rose-300">K1P</td>
+              <td class="p-3 text-center text-rose-400 font-bold">FALSE</td>
+              <td class="p-3 text-center text-rose-400 font-bold">FALSE</td>
+              <td class="p-3 text-center text-rose-400 font-bold">FALSE</td>
+              <td class="p-3 text-center"><span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-400">BLOCKED_GATE</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="border-t border-gray-800 mt-12 py-6 text-center text-xs font-mono text-gray-500">
+    RouteGlow Logistics • Pure Technology Router & Algorithmic Dispatch System • Ottawa & Toronto Grids
+  </footer>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    const SERVICE_MATRIX = {
+      Plumbing: {
+        "Active Burst Pipes / Flooding": { rate: 150, type: "hourly" },
+        "Water Clogging / Sewage Backup": { rate: 120, type: "flat" },
+        "Sump Pump Failures": { rate: 140, type: "flat" }
+      },
+      Winter_Clearing: {
+        "Driveway Snow Removal": { rate: 55, type: "flat" },
+        "Walkway Cleaning & Salting": { rate: 35, type: "flat" },
+        "Bundled Driveway + Walkway": { rate: 80, type: "flat" }
+      },
+      Electrical: {
+        "Live Sparking / Panel Smoke": { rate: 175, type: "hourly", emergency: true },
+        "Partial Power Loss / Neutral Line": { rate: 130, type: "flat" }
+      },
+      HVAC: {
+        "No-Heat Failure (Deep Winter)": { rate: 160, type: "flat" }
+      },
+      Landscaping: {
+        "Immediate Soil/Mulch Delivery": { rate: 95, type: "per cu. yd" },
+        "Post-Storm Debris/Tree Removal": { rate: 110, type: "hourly" }
+      }
+    };
+
+    function updateCalcSubTypes() {
+      const cat = document.getElementById('calc-category').value;
+      const subSelect = document.getElementById('calc-subtype');
+      subSelect.innerHTML = '';
+      
+      const subTypes = SERVICE_MATRIX[cat];
+      for (const st in subTypes) {
+        const opt = document.createElement('option');
+        opt.value = st;
+        opt.textContent = `${st} ($${subTypes[st].rate} ${subTypes[st].type})`;
+        subSelect.appendChild(opt);
+      }
+      recalcFee();
+    }
+
+    function recalcFee() {
+      const cat = document.getElementById('calc-category').value;
+      const sub = document.getElementById('calc-subtype').value;
+      const config = SERVICE_MATRIX[cat] ? SERVICE_MATRIX[cat][sub] : null;
+
+      const baseRate = config ? config.rate : 0;
+      const rateType = config ? config.type : 'flat';
+      document.getElementById('calc-rate-type').textContent = rateType;
+      document.getElementById('calc-base-payout').textContent = `$${baseRate.toFixed(2)} CAD`;
+
+      let surcharge = 0;
+      if (document.getElementById('chk-after-hours').checked && sub === 'Active Burst Pipes / Flooding') surcharge += 50;
+      if (document.getElementById('chk-commercial').checked && sub === 'Water Clogging / Sewage Backup') surcharge += 35;
+      if (document.getElementById('chk-rain').checked && sub === 'Sump Pump Failures') surcharge += 25;
+      if (document.getElementById('chk-snow-15').checked && sub === 'Driveway Snow Removal') surcharge += 20;
+      if (document.getElementById('chk-snow-15').checked && sub === 'Bundled Driveway + Walkway') surcharge += 30;
+      if (document.getElementById('chk-ice-chop').checked && sub === 'Walkway Cleaning & Salting') surcharge += 15;
+      if (document.getElementById('chk-deep-freeze').checked && sub === 'No-Heat Failure (Deep Winter)') surcharge += 50;
+      if (document.getElementById('chk-no-dump').checked && sub === 'Immediate Soil/Mulch Delivery') surcharge += 40;
+      if (document.getElementById('chk-power-lines').checked && sub === 'Post-Storm Debris/Tree Removal') surcharge += 60;
+
+      document.getElementById('calc-surcharge').textContent = `+$${surcharge.toFixed(2)} CAD`;
+      
+      const platformFee = 45;
+      const total = platformFee + baseRate + surcharge;
+      document.getElementById('calc-total').textContent = `$${total.toFixed(2)} CAD`;
+      document.getElementById('calc-cents').textContent = (total * 100);
+    }
+
+    // SCENARIO LOADER
+    function loadScenario(type) {
+      if (type === 'burst_pipe') {
+        document.getElementById('calc-category').value = 'Plumbing';
+        updateCalcSubTypes();
+        document.getElementById('calc-subtype').value = 'Active Burst Pipes / Flooding';
+        document.getElementById('chk-after-hours').checked = true;
+      } else if (type === 'live_spark') {
+        document.getElementById('calc-category').value = 'Electrical';
+        updateCalcSubTypes();
+        document.getElementById('calc-subtype').value = 'Live Sparking / Panel Smoke';
+      } else if (type === 'deep_freeze') {
+        document.getElementById('calc-category').value = 'HVAC';
+        updateCalcSubTypes();
+        document.getElementById('calc-subtype').value = 'No-Heat Failure (Deep Winter)';
+        document.getElementById('chk-deep-freeze').checked = true;
+      } else if (type === 'snow_storm') {
+        document.getElementById('calc-category').value = 'Winter_Clearing';
+        updateCalcSubTypes();
+        document.getElementById('calc-subtype').value = 'Bundled Driveway + Walkway';
+        document.getElementById('chk-snow-15').checked = true;
+      } else if (type === 'tree_fall') {
+        document.getElementById('calc-category').value = 'Landscaping';
+        updateCalcSubTypes();
+        document.getElementById('calc-subtype').value = 'Post-Storm Debris/Tree Removal';
+        document.getElementById('chk-power-lines').checked = true;
+      } else if (type === 'sewage_backup') {
+        document.getElementById('calc-category').value = 'Plumbing';
+        updateCalcSubTypes();
+        document.getElementById('calc-subtype').value = 'Water Clogging / Sewage Backup';
+        document.getElementById('chk-commercial').checked = true;
+      }
+      recalcFee();
+    }
+
+    // CALL SIMULATION
+    let callInterval = null;
+    function simulateVoiceCall() {
+      const transcript = document.getElementById('transcript');
+      transcript.innerHTML = '';
+      document.getElementById('call-state-pill').textContent = 'CALL ACTIVE';
+      document.getElementById('call-state-pill').className = 'text-orange-400 animate-pulse';
+
+      const cat = document.getElementById('calc-category').value;
+      const sub = document.getElementById('calc-subtype').value;
+      const totalCAD = document.getElementById('calc-total').textContent;
+
+      const steps = [
+        { time: 'T+0.1s', speaker: 'SYSTEM', text: 'Incoming Call [Phone: +1 (613) 555-8844, Grid: Ottawa K1P]. Picked up on FIRST RING.' },
+        { time: 'T+0.4s', speaker: 'DISPATCHER (Voice)', text: 'Thank you for calling the RouteGlow emergency network. I am an automated routing agent designed to deploy local technicians instantly. What emergency or on-demand service are you facing right now?' },
+        { time: 'T+2.2s', speaker: 'CALLER', text: `We have an emergency with ${sub.toLowerCase()}! Water is spreading into the basement.` },
+        { time: 'T+3.5s', speaker: 'DISPATCHER (Voice)', text: 'I am initiating our closest worker lookup. What is the exact street address and postal code of the property?' },
+        { time: 'T+5.0s', speaker: 'CALLER', text: '180 Wellington St, Ottawa, ON, K1P 5A4' },
+        { time: 'T+6.2s', speaker: 'DISPATCHER (Voice)', text: 'Thank you. What is your full name and primary phone number?' },
+        { time: 'T+7.4s', speaker: 'CALLER', text: 'Sarah Jenkins, 613-555-8844' },
+        { time: 'T+8.6s', speaker: 'TOOL EXECUTION', text: `API >> process_payment_intent({ customerPhone: "+16135558844", serviceCategory: "${cat}", subType: "${sub}" }) -> Pre-Auth Intent Generated: ${totalCAD}.` },
+        { time: 'T+9.5s', speaker: 'DISPATCHER (MANDATORY DISCLAIMER)', text: 'Before I push this alert out to our live network, please be advised that RouteGlow is a pure software matching platform and technology router, not a licensed contractor. We algorithmically route your service request to independent, third-party local trade businesses and casual gig workers who carry their own individual tools and local qualifications. The physical contract for execution is strictly between you and the responding professional. Our automated software routing fee is forty-five dollars, which locks in your priority sixty-minute dispatch window. This fee, along with the specific trade rate, will be securely pre-authorized on your card. Do you verbally authorize me to process the dispatch fee and alert the closest on-call professional?' },
+        { time: 'T+14.0s', speaker: 'CALLER', text: 'Yes, I verbally authorize the charge.' },
+        { time: 'T+15.2s', speaker: 'TOOL EXECUTION', text: 'API >> trigger_subcontractor_match() -> Vicarious liability gate validated. Closest: Marc Tremblay (0.79 km, ETA 4 min).' },
+        { time: 'T+16.5s', speaker: 'DISPATCHER (Voice)', text: 'Authorization confirmed. Your priority sixty-minute dispatch window is locked. Our nearest qualified contractor is being alerted to your location right now. You will receive an instant SMS status update.' },
+        { time: 'T+17.8s', speaker: 'SYSTEM', text: 'CALL DISPATCHED. 3-Minute SLA Countdown Activated.' }
+      ];
+
+      let i = 0;
+      if (callInterval) clearInterval(callInterval);
+      callInterval = setInterval(() => {
+        if (i < steps.length) {
+          const step = steps[i];
+          const div = document.createElement('div');
+          div.className = 'border-l-2 pl-2 ' + (
+            step.speaker.includes('DISPATCHER') ? 'border-orange-500 text-orange-200' :
+            step.speaker === 'CALLER' ? 'border-blue-400 text-blue-200' :
+            step.speaker.includes('TOOL') ? 'border-emerald-400 text-emerald-300 font-mono text-[11px]' :
+            'border-gray-600 text-gray-400'
+          );
+          div.innerHTML = `<span class="text-gray-500 text-[10px]">[${step.time}]</span> <strong class="text-white">${step.speaker}:</strong> ${step.text}`;
+          transcript.appendChild(div);
+          transcript.scrollTop = transcript.scrollHeight;
+          i++;
+        } else {
+          clearInterval(callInterval);
+          document.getElementById('call-state-pill').textContent = 'COMPLETED';
+          document.getElementById('call-state-pill').className = 'text-emerald-400';
+          startEscalationSim(true);
+        }
+      }, 700);
+    }
+
+    function resetCall() {
+      if (callInterval) clearInterval(callInterval);
+      document.getElementById('transcript').innerHTML = '<div class="text-gray-600 italic">Network idle. Click \'Simulate First-Ring Inbound Call\' to trigger the RouteGlow AI Dispatcher intake cycle...</div>';
+      document.getElementById('call-state-pill').textContent = 'STANDBY';
+      document.getElementById('call-state-pill').className = 'text-gray-500';
+    }
+
+    // ESCALATION SIMULATOR
+    let timerInterval = null;
+    function startEscalationSim(willAccept) {
+      if (timerInterval) clearInterval(timerInterval);
+      const timerEl = document.getElementById('escalation-timer');
+      const step0 = document.getElementById('esc-step-0');
+      const step300 = document.getElementById('esc-step-300');
+      const step301 = document.getElementById('esc-step-301');
+
+      step0.className = 'p-2.5 rounded-lg border border-blue-500/50 bg-blue-950/20 flex items-start gap-2.5 animate-pulse';
+      step300.className = 'p-2.5 rounded-lg border border-gray-800 bg-gray-950 flex items-start gap-2.5';
+      step301.className = 'p-2.5 rounded-lg border border-gray-800 bg-gray-950 flex items-start gap-2.5';
+
+      let secondsLeft = willAccept ? 45 : 180;
+      timerEl.textContent = '03:00.00';
+
+      if (willAccept) {
+        timerEl.textContent = '00:45.00';
+        setTimeout(() => {
+          step0.className = 'p-2.5 rounded-lg border border-emerald-500/50 bg-emerald-950/20 flex items-start gap-2.5';
+          step0.innerHTML = '<span class="text-emerald-400 font-bold">✓ 0.45m</span><div><div class="font-bold text-white">Handshake Verified within SLA!</div><div class="text-emerald-400 text-[11px]">Contractor #1 (Marc Tremblay) accepted via SMS in 45s. Deployed to site.</div></div>';
+          timerEl.textContent = 'ACCEPTED';
+          timerEl.className = 'font-mono text-base font-bold text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded border border-emerald-500/20';
+        }, 1200);
+      } else {
+        step0.className = 'p-2.5 rounded-lg border border-gray-800 bg-gray-950 flex items-start gap-2.5';
+        step300.className = 'p-2.5 rounded-lg border border-rose-500/60 bg-rose-950/40 flex items-start gap-2.5 animate-pulse';
+        step300.innerHTML = '<span class="text-rose-400 font-bold">3.00m</span><div><div class="font-bold text-rose-300">Contractor #1 Suspended for Missed Handshake</div><div class="text-rose-400 text-[11px]">Database Action Executed: account_status=\'Suspended\', is_on_call=false.</div></div>';
+        
+        setTimeout(() => {
+          step301.className = 'p-2.5 rounded-lg border border-amber-500/60 bg-amber-950/40 flex items-start gap-2.5 animate-pulse';
+          step301.innerHTML = '<span class="text-amber-400 font-bold">3.01m</span><div><div class="font-bold text-amber-300">Instant Multi-Broadcast Dispatched</div><div class="text-amber-400 text-[11px]">Simultaneous alert sent to Alex Moreau & David O\'Connor via Distance Matrix.</div></div>';
+          timerEl.textContent = 'ESCALATED';
+          timerEl.className = 'font-mono text-base font-bold text-amber-400 bg-amber-500/10 px-2 py-1 rounded border border-amber-500/20';
+        }, 1200);
+      }
+    }
+
+    // Initialize
+    updateCalcSubTypes();
+  </script>
+</body>
+</html>
