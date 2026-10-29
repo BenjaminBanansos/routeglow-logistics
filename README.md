@@ -1,4 +1,5 @@
 # RouteGlow Logistics Master Engine
+**Live Web Console:** [benjaminbanansos.github.io/routeglow-logistics](https://benjaminbanansos.github.io/routeglow-logistics/)  
 **Operational Environment:** Ottawa (K-series) & Toronto (M-series) Regional Grid Systems  
 **Core Model:** Gemini 1.5 Flash (Voice-Native Mode)  
 **Platform Identity:** RouteGlow AI Dispatcher  
