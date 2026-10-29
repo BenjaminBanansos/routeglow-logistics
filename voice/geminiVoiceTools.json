@@ -1,0 +1,90 @@
+{
+  "tools": [
+    {
+      "function_declarations": [
+        {
+          "name": "trigger_subcontractor_match",
+          "description": "Parses caller parameters, geocodes address, and pings nearest available worker via Distance Matrix API.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "customerName": {
+                "type": "string",
+                "description": "Full name of caller/property contact"
+              },
+              "customerPhone": {
+                "type": "string",
+                "description": "E.164 or Canadian phone number"
+              },
+              "incidentAddress": {
+                "type": "string",
+                "description": "Exact street address of the property"
+              },
+              "city": {
+                "type": "string",
+                "enum": ["Ottawa", "Toronto"],
+                "description": "Must be within Ottawa or Toronto grid"
+              },
+              "postalCodePrefix": {
+                "type": "string",
+                "maxLength": 3,
+                "description": "First 3 characters of Canadian Postal Code (e.g., K1P, M5V)"
+              },
+              "serviceCategory": {
+                "type": "string",
+                "enum": ["Plumbing", "Electrical", "HVAC", "Winter_Clearing", "Landscaping"],
+                "description": "Core trade category"
+              },
+              "subType": {
+                "type": "string",
+                "description": "Specific issue sub-type (e.g., Active Burst Pipes / Flooding)"
+              },
+              "platformFeeInCents": {
+                "type": "integer",
+                "default": 4500,
+                "description": "Platform margin fee in CAD cents ($45.00)"
+              }
+            },
+            "required": [
+              "customerPhone",
+              "incidentAddress",
+              "city",
+              "postalCodePrefix",
+              "serviceCategory"
+            ]
+          }
+        },
+        {
+          "name": "process_payment_intent",
+          "description": "Pre-authorizes the $45 platform routing fee plus trade base rate and dynamic environmental surcharges.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "customerPhone": { "type": "string" },
+              "customerName": { "type": "string" },
+              "serviceCategory": {
+                "type": "string",
+                "enum": ["Plumbing", "Electrical", "HVAC", "Winter_Clearing", "Landscaping"]
+              },
+              "subType": { "type": "string" },
+              "context": {
+                "type": "object",
+                "properties": {
+                  "isAfterHours": { "type": "boolean", "description": "True if between 10 PM and 6 AM" },
+                  "isCommercialLine": { "type": "boolean" },
+                  "hasRainAlert": { "type": "boolean" },
+                  "snowAccumulationCm": { "type": "number" },
+                  "requiresIceChopping": { "type": "boolean" },
+                  "temperatureCelsius": { "type": "number" },
+                  "lacksDumpAccess": { "type": "boolean" },
+                  "powerLinesEntangled": { "type": "boolean" }
+                }
+              }
+            },
+            "required": ["customerPhone", "serviceCategory", "subType"]
+          }
+        }
+      ]
+    }
+  ]
+}

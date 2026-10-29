@@ -1,0 +1,21 @@
+{
+  "name": "routeglow-logistics",
+  "version": "1.0.0",
+  "description": "RouteGlow Logistics - Automated, hyper-local software routing network for Ottawa and Toronto regional grids",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/simulator.js",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "logistics",
+    "voice-dispatch",
+    "gemini",
+    "distance-matrix",
+    "emergency-routing",
+    "ottawa",
+    "toronto"
+  ],
+  "author": "BenjaminBanansos",
+  "license": "MIT"
+}

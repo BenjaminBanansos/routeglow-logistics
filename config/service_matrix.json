@@ -1,0 +1,148 @@
+{
+  "platform": {
+    "name": "RouteGlow Logistics",
+    "description": "Automated, hyper-local software routing network for emergency trade deployments",
+    "baseDispatchFeeCAD": 45.00,
+    "baseDispatchFeeInCents": 4500,
+    "slaWindowMinutes": 60,
+    "handshakeTimeoutMinutes": 3.00,
+    "supportedCities": ["Ottawa", "Toronto"]
+  },
+  "serviceMatrix": {
+    "Plumbing": {
+      "displayName": "💧 PLUMBING & WATER",
+      "subTypes": {
+        "Active Burst Pipes / Flooding": {
+          "payoutType": "hourly",
+          "workerBasePayoutCAD": 150.00,
+          "surchargeConditions": [
+            {
+              "trigger": "after_hours",
+              "description": "After-hours (10 PM - 6 AM)",
+              "amountCAD": 50.00
+            }
+          ]
+        },
+        "Water Clogging / Sewage Backup": {
+          "payoutType": "flat",
+          "workerBasePayoutCAD": 120.00,
+          "surchargeConditions": [
+            {
+              "trigger": "commercial_lines",
+              "description": "Commercial lines",
+              "amountCAD": 35.00
+            }
+          ]
+        },
+        "Sump Pump Failures": {
+          "payoutType": "flat",
+          "workerBasePayoutCAD": 140.00,
+          "surchargeConditions": [
+            {
+              "trigger": "rain_alert",
+              "description": "During rain alerts",
+              "amountCAD": 25.00
+            }
+          ]
+        }
+      }
+    },
+    "Winter_Clearing": {
+      "displayName": "❄️ WINTER CLEARING",
+      "subTypes": {
+        "Driveway Snow Removal": {
+          "payoutType": "flat",
+          "workerBasePayoutCAD": 55.00,
+          "surchargeConditions": [
+            {
+              "trigger": "snow_over_15cm",
+              "description": "Snow accumulation > 15cm",
+              "amountCAD": 20.00
+            }
+          ]
+        },
+        "Walkway Cleaning & Salting": {
+          "payoutType": "flat",
+          "workerBasePayoutCAD": 35.00,
+          "surchargeConditions": [
+            {
+              "trigger": "ice_scraping_chopping",
+              "description": "Ice-scraping / chopping",
+              "amountCAD": 15.00
+            }
+          ]
+        },
+        "Bundled Driveway + Walkway": {
+          "payoutType": "flat",
+          "workerBasePayoutCAD": 80.00,
+          "surchargeConditions": [
+            {
+              "trigger": "snow_over_15cm",
+              "description": "Snow accumulation > 15cm",
+              "amountCAD": 30.00
+            }
+          ]
+        }
+      }
+    },
+    "Electrical": {
+      "displayName": "⚡ ELECTRICAL",
+      "subTypes": {
+        "Live Sparking / Panel Smoke": {
+          "payoutType": "hourly",
+          "workerBasePayoutCAD": 175.00,
+          "emergencyEscalation": true,
+          "surchargeConditions": []
+        },
+        "Partial Power Loss / Neutral Line": {
+          "payoutType": "flat",
+          "workerBasePayoutCAD": 130.00,
+          "surchargeConditions": []
+        }
+      }
+    },
+    "HVAC": {
+      "displayName": "💨 HVAC",
+      "subTypes": {
+        "No-Heat Failure (Deep Winter)": {
+          "payoutType": "flat",
+          "workerBasePayoutCAD": 160.00,
+          "surchargeConditions": [
+            {
+              "trigger": "deep_freeze",
+              "description": "Temperature < -15°C",
+              "amountCAD": 50.00
+            }
+          ]
+        }
+      }
+    },
+    "Landscaping": {
+      "displayName": "🌳 LANDSCAPING & SOIL",
+      "subTypes": {
+        "Immediate Soil/Mulch Delivery": {
+          "payoutType": "per_cubic_yard",
+          "workerBasePayoutCAD": 95.00,
+          "surchargeConditions": [
+            {
+              "trigger": "no_dump_access",
+              "description": "Delivery site lacks dump access",
+              "amountCAD": 40.00
+            }
+          ]
+        },
+        "Post-Storm Debris/Tree Removal": {
+          "payoutType": "hourly",
+          "workerBasePayoutCAD": 110.00,
+          "surchargeConditions": [
+            {
+              "trigger": "power_lines_entangled",
+              "description": "Power lines are entangled",
+              "amountCAD": 60.00
+            }
+          ]
+        }
+      }
+    }
+  }
+}
